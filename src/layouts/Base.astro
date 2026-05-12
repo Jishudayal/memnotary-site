@@ -1,0 +1,42 @@
+---
+import "geist/font/sans.css";
+import "geist/font/mono.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "memnotary — memory your AI agents can actually trust",
+  description =
+    "The open-source audit and integrity layer for AI agent memory. Contradiction detection, health scoring, and automatic consolidation. Wraps your existing vector backend.",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="bg-bg-primary text-text-primary font-sans antialiased">
+    <slot />
+  </body>
+</html>
