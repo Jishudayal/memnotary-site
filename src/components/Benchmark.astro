@@ -1,0 +1,113 @@
+---
+// Track 2 — behavioral benchmark data
+const rows = [
+  {
+    system: "memnotary",
+    overall: "0.94",
+    signal: "0.86",
+    risk: "LOW",
+    highlight: true,
+  },
+  {
+    system: "mem0",
+    overall: "0.77",
+    signal: "0.43",
+    risk: "MEDIUM",
+    highlight: false,
+  },
+  {
+    system: "naive-qdrant",
+    overall: "0.71",
+    signal: "0.29",
+    risk: "MEDIUM",
+    highlight: false,
+  },
+];
+---
+
+<section id="benchmark" class="border-t border-border">
+  <div class="max-w-5xl mx-auto px-6 py-24">
+
+    <!-- Section label -->
+    <p class="text-xs font-mono text-text-tertiary uppercase tracking-widest mb-6">
+      Benchmark — Track 2 · Behavioral
+    </p>
+
+    <!-- Headline -->
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-text-primary mb-4 max-w-2xl text-balance">
+      Correctness is the easy part.
+    </h2>
+
+    <!-- Context -->
+    <p class="text-text-secondary leading-relaxed mb-16 max-w-xl">
+      7 real-world contradiction scenarios across 3 systems, scored on correctness,
+      conflict signal, and fact preservation. All three return the right answer.
+      Only memnotary tells you when another answer is wrong.
+    </p>
+
+    <!-- Key stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border rounded-lg overflow-hidden border border-border mb-12">
+      <div class="bg-bg-secondary px-6 py-5">
+        <p class="text-3xl font-mono font-semibold text-accent">6<span class="text-text-tertiary text-xl">/7</span></p>
+        <p class="text-sm text-text-secondary mt-1">contradiction scenarios flagged</p>
+      </div>
+      <div class="bg-bg-secondary px-6 py-5">
+        <p class="text-3xl font-mono font-semibold text-text-primary">2.0<span class="text-text-tertiary text-xl">×</span></p>
+        <p class="text-sm text-text-secondary mt-1">more conflicts caught vs Mem0</p>
+      </div>
+      <div class="bg-bg-secondary px-6 py-5">
+        <p class="text-3xl font-mono font-semibold text-text-primary">0.94</p>
+        <p class="text-sm text-text-secondary mt-1">overall score · highest tested</p>
+      </div>
+    </div>
+
+    <!-- Terminal-style table -->
+    <div class="bg-bg-secondary border border-border rounded-lg overflow-hidden mb-10">
+
+      <!-- Table header -->
+      <div class="grid grid-cols-4 gap-4 px-6 py-3 border-b border-border">
+        <span class="font-mono text-xs text-text-tertiary uppercase tracking-wider">System</span>
+        <span class="font-mono text-xs text-text-tertiary uppercase tracking-wider">Overall</span>
+        <span class="font-mono text-xs text-text-tertiary uppercase tracking-wider">Signal</span>
+        <span class="font-mono text-xs text-text-tertiary uppercase tracking-wider">Risk</span>
+      </div>
+
+      <!-- Table rows -->
+      {rows.map((row) => (
+        <div class={`grid grid-cols-4 gap-4 px-6 py-4 border-b border-border last:border-0 ${row.highlight ? "bg-accent/[0.03]" : ""}`}>
+          <span class={`font-mono text-sm ${row.highlight ? "text-text-primary font-medium" : "text-text-secondary"}`}>
+            {row.system}
+          </span>
+          <span class={`font-mono text-sm ${row.highlight ? "text-accent" : "text-text-secondary"}`}>
+            {row.overall}
+          </span>
+          <span class={`font-mono text-sm ${row.highlight ? "text-accent" : "text-text-secondary"}`}>
+            {row.signal}
+          </span>
+          <span class={`font-mono text-sm ${row.highlight ? "text-accent" : "text-text-secondary"}`}>
+            {row.risk}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Signal explanation -->
+    <p class="text-base text-text-secondary leading-relaxed mb-8 max-w-xl">
+      <span class="text-text-primary font-medium">Signal</span> measures whether conflicting or superseded memories are flagged in results.
+      Correctness is 1.00 for all three systems — the difference is whether the wrong answer
+      is silently returned alongside the right one.
+    </p>
+
+    <!-- Link to full benchmark -->
+    <a
+      href="https://github.com/Jishudayal/MemNotary/blob/main/README.md#benchmark"
+      class="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-accent transition-colors"
+    >
+      Read the full benchmark
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
+  </div>
+</section>
