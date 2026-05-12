@@ -1,0 +1,95 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-10">
+
+      <!-- Left: project identity -->
+      <div class="max-w-xs">
+        <p class="font-mono text-sm font-medium text-text-primary mb-2">memnotary</p>
+        <p class="text-sm text-text-tertiary leading-relaxed">
+          The open-source reliability layer for AI agent memory.
+          Contradiction detection, health scoring, and consolidation
+          that wraps your existing vector backend.
+        </p>
+      </div>
+
+      <!-- Right: links -->
+      <div class="flex gap-12 sm:gap-16">
+
+        <div>
+          <p class="text-xs font-mono text-text-tertiary uppercase tracking-widest mb-4">Project</p>
+          <ul class="space-y-3">
+            <li>
+              <a href="https://github.com/Jishudayal/MemNotary"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://pypi.org/project/memnotary"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                PyPI
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Jishudayal/MemNotary/blob/main/README.md#benchmark"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                Benchmark
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Jishudayal/MemNotary/blob/main/CONTRIBUTING.md"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                Contributing
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-mono text-text-tertiary uppercase tracking-widest mb-4">Author</p>
+          <ul class="space-y-3">
+            <li>
+              <a href="https://www.linkedin.com/in/jishu-dayal/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                Jishu Dayal
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="text-xs font-mono text-text-tertiary">
+        MIT License · {year} · memnotary
+      </p>
+      <p class="text-xs text-text-tertiary">
+        Built by
+        <a
+          href="https://www.linkedin.com/in/jishu-dayal/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-text-secondary hover:text-text-primary transition-colors"
+        >Jishu Dayal</a>
+      </p>
+    </div>
+
+  </div>
+</footer>
