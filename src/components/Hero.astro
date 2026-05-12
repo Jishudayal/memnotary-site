@@ -25,41 +25,41 @@
     <div class="mb-8">
       <span class="inline-flex items-center gap-2 text-xs font-mono text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-full">
         <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        v0.1.1 · open source · MIT
+        v0.1.1 · MIT
       </span>
     </div>
 
-    <!-- Headline -->
-    <h1 class="text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold tracking-tight leading-[1.08] text-text-primary mb-6 max-w-3xl">
-      Memory your AI agents<br />can actually trust.
+    <!-- Headline — text-balance handles cross-breakpoint line distribution -->
+    <h1 class="text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold tracking-tight leading-[1.08] text-text-primary mb-6 max-w-3xl text-balance">
+      Memory your AI agents can actually trust.
     </h1>
 
     <!-- Sub-headline -->
-    <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-lg">
-      The open-source reliability layer for AI agent memory.
-      Contradiction detection, health scoring, and automatic consolidation —
-      wraps your existing vector backend.
+    <p class="text-lg text-text-secondary leading-relaxed mb-10 max-w-md">
+      The audit and integrity layer for AI agent memory.
+      Open source. Wraps your existing vector backend.
     </p>
 
-    <!-- pip install copy block -->
+    <!-- pip install — entire block is the copy target -->
     <div class="mb-10">
-      <div class="inline-flex items-center gap-3 bg-bg-secondary border border-border rounded-lg px-4 py-3">
+      <button
+        id="copy-btn"
+        aria-label="Copy install command"
+        aria-live="polite"
+        class="inline-flex items-center gap-3 bg-bg-secondary border border-border rounded-lg px-4 py-3 cursor-pointer group hover:border-text-tertiary transition-colors"
+      >
         <span class="font-mono text-sm text-text-tertiary select-none">$</span>
         <span class="font-mono text-sm text-text-primary">pip install memnotary</span>
-        <button
-          id="copy-btn"
-          aria-label="Copy to clipboard"
-          class="ml-2 text-text-tertiary hover:text-accent transition-colors"
-        >
-          <svg id="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="ml-2 text-text-tertiary group-hover:text-accent transition-colors">
+          <svg id="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
           </svg>
-          <svg id="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden text-accent">
+          <svg id="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden text-accent" aria-hidden="true">
             <polyline points="20 6 9 20 4 12"></polyline>
           </svg>
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
 
     <!-- CTAs -->
@@ -88,18 +88,24 @@
 </section>
 
 <script>
-  const btn = document.getElementById("copy-btn");
+  const btn = document.getElementById("copy-btn") as HTMLButtonElement | null;
   const copyIcon = document.getElementById("copy-icon");
   const checkIcon = document.getElementById("check-icon");
 
   btn?.addEventListener("click", () => {
-    navigator.clipboard.writeText("pip install memnotary").then(() => {
-      copyIcon?.classList.add("hidden");
-      checkIcon?.classList.remove("hidden");
-      setTimeout(() => {
-        copyIcon?.classList.remove("hidden");
-        checkIcon?.classList.add("hidden");
-      }, 2000);
-    });
+    navigator.clipboard.writeText("pip install memnotary")
+      .then(() => {
+        copyIcon?.classList.add("hidden");
+        checkIcon?.classList.remove("hidden");
+        btn.setAttribute("aria-label", "Copied!");
+        setTimeout(() => {
+          copyIcon?.classList.remove("hidden");
+          checkIcon?.classList.add("hidden");
+          btn.setAttribute("aria-label", "Copy install command");
+        }, 2000);
+      })
+      .catch(() => {
+        // clipboard blocked — do nothing, command is still visible to select manually
+      });
   });
 </script>
