@@ -1,0 +1,58 @@
+---
+const CAST_ID = "dthMZBmts3x5Twt4";
+---
+
+<section class="border-t border-border">
+  <div class="max-w-5xl mx-auto px-6 py-24">
+
+    <!-- Section label -->
+    <p class="text-xs font-mono text-text-tertiary uppercase tracking-widest mb-6">
+      Live demo
+    </p>
+
+    <!-- Headline -->
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-text-primary mb-4 text-balance">
+      See the full reliability loop in 90 seconds.
+    </h2>
+
+    <p class="text-text-secondary leading-relaxed mb-12 max-w-xl">
+      store → detect → score → consolidate. No API key, no external service —
+      reproduced entirely in a terminal with an in-memory adapter.
+    </p>
+
+    <!-- Player container -->
+    <div
+      id="asciinema-player"
+      class="rounded-lg overflow-hidden border border-border bg-bg-secondary"
+      style="max-width: 860px;"
+    ></div>
+
+    <!-- Caption -->
+    <p class="mt-4 text-xs font-mono text-text-tertiary">
+      <a
+        href={`https://asciinema.org/a/${CAST_ID}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-accent transition-colors"
+      >
+        Open in asciinema ↗
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var s = document.createElement("script");
+    s.src = "https://asciinema.org/a/dthMZBmts3x5Twt4.js";
+    s.id = "asciicast-dthMZBmts3x5Twt4";
+    s.setAttribute("data-theme", "solarized-dark");
+    s.setAttribute("data-speed", "1.2");
+    s.setAttribute("data-cols", "100");
+    s.setAttribute("data-rows", "30");
+    s.setAttribute("data-autoplay", "false");
+    s.async = true;
+    document.getElementById("asciinema-player").appendChild(s);
+  })();
+</script>

@@ -1,0 +1,86 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Wrap your existing vector backend",
+    description: "One constructor. Works with Qdrant, Chroma, pgvector, or in-memory. Nothing in your storage layer changes.",
+    code: `from memnotary import Memnotary, ContradictionDetector
+from memnotary import QdrantAdapter
+from qdrant_client import QdrantClient
+
+mn = Memnotary(
+    QdrantAdapter(QdrantClient(url="localhost:6333")),
+    detector=ContradictionDetector(llm_fn=your_llm),
+)`,
+    output: null,
+  },
+  {
+    number: "02",
+    title: "Every store runs conflict detection",
+    description: "When a new memory lands, memnotary searches for semantic neighbors above its similarity threshold. Confirmed conflicts become ConflictRecords — inspectable, queryable, actable.",
+    code: `await mn.store(Memory(agent_id="bot",
+    text="Refund policy is 30 days", embedding=...))
+
+await mn.store(Memory(agent_id="bot",
+    text="Refund policy changed to 14 days", embedding=...))`,
+    output: "⚠  ConflictRecord created  direct_contradiction  confidence: 0.95",
+  },
+  {
+    number: "03",
+    title: "Health scoring tells you when to act",
+    description: "health() returns a snapshot across your full memory collection. consolidate() plans and executes: supersede, merge, or flag for human review.",
+    code: `h = await mn.health("bot")
+# contradiction_score: 1.00   risk: HIGH
+
+await mn.consolidate("bot")
+
+h = await mn.health("bot")
+# contradiction_score: 0.00   risk: LOW`,
+    output: "✓  plan executed  action=merge  tier=auto_merge",
+  },
+];
+---
+
+<section class="border-t border-border">
+  <div class="max-w-5xl mx-auto px-6 py-24">
+
+    <!-- Section label -->
+    <p class="text-xs font-mono text-text-tertiary uppercase tracking-widest mb-6">
+      How it works
+    </p>
+
+    <!-- Headline -->
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-text-primary mb-16 text-balance">
+      Three calls. Full reliability loop.
+    </h2>
+
+    <!-- Steps -->
+    <div class="space-y-16">
+      {steps.map((step) => (
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+
+          <!-- Left: step label + description -->
+          <div>
+            <p class="font-mono text-xs text-text-tertiary mb-3">{step.number}</p>
+            <h3 class="text-xl font-semibold text-text-primary mb-3">{step.title}</h3>
+            <p class="text-text-secondary leading-relaxed">{step.description}</p>
+          </div>
+
+          <!-- Right: code block -->
+          <div>
+            <div class="bg-bg-secondary border border-border rounded-lg overflow-hidden">
+              <pre class="p-5 overflow-x-auto"><code class="font-mono text-sm text-text-primary leading-relaxed">{step.code}</code></pre>
+              {step.output && (
+                <div class="border-t border-border px-5 py-3">
+                  <span class="font-mono text-xs text-accent">{step.output}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
