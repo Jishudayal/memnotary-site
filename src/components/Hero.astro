@@ -27,7 +27,7 @@ try {
   </nav>
 </header>
 
-<section class="min-h-[calc(100vh-3.5rem)] flex items-center">
+<section class="relative min-h-[calc(100vh-3.5rem)] flex items-center">
   <div class="max-w-5xl mx-auto px-6 py-24 w-full">
 
     <!-- Version badge -->
@@ -94,13 +94,13 @@ try {
       </a>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="mt-16 text-text-tertiary opacity-30 animate-bounce">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 9l6 6 6-6"/>
-      </svg>
-    </div>
+  </div>
 
+  <!-- Scroll indicator — pinned to viewport bottom -->
+  <div class="absolute bottom-8 left-6 text-text-tertiary opacity-25 animate-bounce">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
   </div>
 </section>
 
