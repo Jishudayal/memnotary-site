@@ -1,5 +1,14 @@
 ---
-// No props — hero content is fixed
+let version = "0.1.1";
+try {
+  const res = await fetch("https://pypi.org/pypi/memnotary/json");
+  if (res.ok) {
+    const data = await res.json();
+    version = data.info.version;
+  }
+} catch {
+  // use fallback
+}
 ---
 
 <header class="border-b border-border">
@@ -25,7 +34,7 @@
     <div class="mb-8">
       <span class="inline-flex items-center gap-2 text-xs font-mono text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-full">
         <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        v0.1.1 · MIT
+        v{version} · MIT
       </span>
     </div>
 
