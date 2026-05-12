@@ -4,9 +4,4 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://memnotary.dev",
   integrations: [tailwind()],
-  vite: {
-    ssr: {
-      noExternal: ["geist"],
-    },
-  },
 });

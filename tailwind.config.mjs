@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["GeistVariable", ...fontFamily.sans],
-        mono: ["GeistMonoVariable", ...fontFamily.mono],
+        sans: ["Geist Variable", ...fontFamily.sans],
+        mono: ["Geist Mono Variable", ...fontFamily.mono],
       },
       colors: {
         bg: {
